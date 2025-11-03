@@ -38,11 +38,9 @@ const ProcessCard = ({ icon, title, description, isActive }) => {
         <div
           className="absolute inset-0 rounded-3xl pointer-events-none"
           style={{
-            background: `linear-gradient(to bottom, #1e6fff 0%, #1e6fff ${
-              isActive ? "100%" : "0%"
-            }, transparent ${isActive ? "100%" : "0%"})`,
-            transition: "background 800ms ease-out",
-            transitionDelay: isActive ? "1000ms" : "0ms",
+            background: "#1e6fff",
+            clipPath: isActive ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
+            transition: "clip-path 800ms ease-out 1000ms",
             WebkitMask:
               "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMaskComposite: "xor",
