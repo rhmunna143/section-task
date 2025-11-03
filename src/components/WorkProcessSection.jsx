@@ -7,20 +7,11 @@ const ProcessCard = ({ icon, title, description, isActive }) => {
       {/* Timeline Point - sitting ON the timeline (intersecting) */}
       <div className="absolute -top-[18px] left-1/2 -translate-x-1/2 z-30">
         <div 
-          className="timeline-point-outer relative w-5 h-5 rounded-full flex items-center justify-center transition-all duration-1000"
+          className="timeline-point w-5 h-5 rounded-full transition-all duration-1000"
           style={{
             background: isActive ? '#1e6fff' : 'rgba(30, 111, 255, 0.2)',
-            boxShadow: isActive ? '0 0 0 4px rgba(30, 111, 255, 0.2)' : 'none',
           }}
-        >
-          <span 
-            className="timeline-point-inner block w-2 h-2 rounded-full transition-all duration-1000"
-            style={{
-              background: isActive ? '#ffffff' : 'transparent',
-              transform: isActive ? 'scale(1)' : 'scale(0.5)',
-            }}
-          ></span>
-        </div>
+        ></div>
       </div>
 
       {/* Vertical connector line with animated fill effect */}
