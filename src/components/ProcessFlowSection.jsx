@@ -5,22 +5,7 @@ import BlurredCircle from "./BlurredCircle";
 
 const ProcessFlowSection = ({ data }) => {
   return (
-    <section className="relative min-h-screen overflow-hidden my-10 container mx-auto">
-      {/* Decorative blurred circles */}
-      <BlurredCircle 
-        size={184}
-        color="#1e6fff"
-        blurAmount={420}
-        className="absolute top-[581px] left-0"
-      />
-
-      <BlurredCircle 
-        size={175}
-        color="#1e6fff"
-        blurAmount={420}
-        className="absolute top-[360px] right-0"
-      />
-      
+    <section className="relative overflow-hidden py-28 px-16 flow-section">
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center" style={{ gap: '75.22px' }}>
         {/* Header */}
@@ -36,7 +21,7 @@ const ProcessFlowSection = ({ data }) => {
             <img 
               src="/images/flow-connector.svg" 
               alt="" 
-              className="w-full h-auto max-w-[1217px]"
+              className="w-full h-auto max-w-304.25"
             />
           </div>
           
@@ -44,7 +29,7 @@ const ProcessFlowSection = ({ data }) => {
           <div className="relative z-10 grid grid-cols-4 gap-x-8 gap-y-16">
             {/* Top Row - 4 stages */}
             {data.stages.slice(0, 4).map((stage, index) => (
-              <div key={index} className="flex justify-evenly relative right-20 bottom-10">
+              <div key={index} className="flex justify-evenly relative right-23 bottom-12">
                 <ProcessStage 
                   label={stage.label}
                   icon={stage.icon}
@@ -57,7 +42,7 @@ const ProcessFlowSection = ({ data }) => {
             
             {/* Bottom Row - 4 stages */}
             {data.stages.slice(4, 8).map((stage, index) => (
-              <div key={index + 4} className="flex justify-center relative left-20 top-12">
+              <div key={index + 4} className="flex justify-center relative left-22 top-14">
                 <ProcessStage 
                   label={stage.label}
                   icon={stage.icon}

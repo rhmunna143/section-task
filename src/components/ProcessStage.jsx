@@ -15,7 +15,7 @@ const ProcessStage = ({
       {/* Label */}
       {top && (
         <div className="bg-[#1e6fff] px-2 py-2 rounded-lg -mt-[9px] relative top-1 z-10">
-          <span className="text-white text-[14px] font-medium whitespace-nowrap">
+          <span className="text-white text-sm font-medium whitespace-nowrap">
             {label}
           </span>
         </div>
