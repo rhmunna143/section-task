@@ -1,6 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700');
 @import "tailwindcss";
 
+:root {
+    --White-Mode-For-Design-Heading: #0F1724;
+    --White-Mode-For-Design-Paragraph: #9B9C9D;
+    
+    /* Process Flow Theme Colors */
+    --process-flow-bg: #f5f6f9;
+    --process-flow-heading: #0f1724;
+    --process-flow-text: #9b9c9d;
+    --process-flow-accent: #1e6fff;
+    --process-flow-stage-bg: #8db6ff;
+    --process-flow-label-text: #ffffff;
+    
+    /* Typography */
+    --font-roboto: 'Roboto', sans-serif;
+    
+    /* Spacing */
+    --section-gap: 75.22px;
+    --header-gap: 16px;
+    --heading-gap: 8px;
+    
+    /* Effects */
+    --blur-amount: 420px;
+    --shadow-stage: 0px 3.71px 3.71px rgba(0, 0, 0, 0.25);
+    --shadow-icon: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 @utility process-flow-heading {
   font-family: var(--font-roboto);
   font-size: 50.10px;
