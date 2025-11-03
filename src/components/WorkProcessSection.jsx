@@ -27,7 +27,7 @@ const ProcessCard = ({ icon, title, description, isActive }) => {
 
       {/* Card with glassmorphism effect */}
       <div
-        className="card-content relative w-[201px] rounded-3xl p-6 flex flex-col items-center text-center overflow-hidden"
+        className="card-content relative w-[200px] h-[250px] rounded-3xl p-6 flex flex-col justify-evenly items-center text-center overflow-hidden"
         style={{
           backgroundColor: "rgba(30, 111, 255, 0.03)",
           boxShadow:
@@ -49,6 +49,7 @@ const ProcessCard = ({ icon, title, description, isActive }) => {
             padding: "1px",
           }}
         ></div>
+
         {/* Icon */}
         <div className="w-[50px] h-[50px] mb-6 -mt-2">
           <div className="icon-container w-46 absolute top-0 left-0 right-0 bottom-0 m-auto z-[-300]">
