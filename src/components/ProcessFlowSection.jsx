@@ -128,7 +128,7 @@ const ProcessStage = ({
 
       {/* Label */}
       {!top && (
-        <div className="bg-[#1e6fff] px-2 py-2 rounded-lg -mt-[9px] relative bottom-0">
+        <div className="bg-[#1e6fff] px-2 py-2 rounded-lg -mt-[9px] relative bottom-1">
           <span className="text-white text-[14px] font-medium whitespace-nowrap">
             {label}
           </span>
@@ -166,7 +166,18 @@ const ProcessFlowSection = ({ data }) => {
     const index = animationIndexRef.current;
     if (index < data.stages.length) {
       setTimeout(() => {
-        showStage(index);
+        // Animate one by one in zigzag pattern:
+        // 0 (top-left), 4 (bottom-left), 1 (top-2nd), 5 (bottom-2nd),
+        // 2 (top-3rd), 6 (bottom-3rd), 3 (top-right), 7 (bottom-right)
+        let stageIndex;
+        if (index % 2 === 0) {
+          // Even indices: top row (0, 1, 2, 3)
+          stageIndex = index / 2;
+        } else {
+          // Odd indices: bottom row (4, 5, 6, 7)
+          stageIndex = 4 + Math.floor(index / 2);
+        }
+        showStage(stageIndex);
         const progress = ((index + 1) / data.stages.length) * 100;
         animateConnector(progress);
         animationIndexRef.current++;
