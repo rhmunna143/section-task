@@ -237,7 +237,7 @@ const ProcessFlowSection = ({ data }) => {
           </div>
 
           {/* Stages Grid */}
-          <div className="relative z-10 grid grid-cols-4 gap-x-8 gap-y-16">
+          <div className="relative z-10 grid grid-cols-4 gap-x-8 gap-y-16 max-w-304.25 mx-auto">
             {/* Top Row - 4 stages */}
             {data.stages.slice(0, 4).map((stage, index) => (
               <div
