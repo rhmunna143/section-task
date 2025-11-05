@@ -12,11 +12,38 @@ const ProcessStage = ({
   const [showTooltip, setShowTooltip] = React.useState(false);
 
   return (
-    <div className={`flex flex-col items-center ${className}`}>
+    <div
+      className={className}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       {/* Label */}
       {top && (
-        <div className="bg-[#1e6fff] px-2 py-2 rounded-lg -mt-[9px] relative top-1 z-10">
-          <span className="text-white text-sm font-medium whitespace-nowrap">
+        <div
+          style={{
+            backgroundColor: "#1e6fff",
+            paddingLeft: "8px",
+            paddingRight: "8px",
+            paddingTop: "8px",
+            paddingBottom: "8px",
+            borderRadius: "8px",
+            marginTop: "-9px",
+            position: "relative",
+            top: "4px",
+            zIndex: 10,
+          }}
+        >
+          <span
+            style={{
+              color: "white",
+              fontSize: "14px",
+              fontWeight: 500,
+              whiteSpace: "nowrap",
+            }}
+          >
             {label}
           </span>
         </div>
@@ -29,7 +56,14 @@ const ProcessStage = ({
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
         tabIndex={0}
-        className="relative w-[148px] h-[131px] flex items-center justify-center"
+        style={{
+          position: "relative",
+          width: "148px",
+          height: "131px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
         aria-describedby={toolTip ? `${label}-tooltip` : undefined}
       >
         {/* Tooltip (shows on hover / focus) */}
@@ -38,17 +72,49 @@ const ProcessStage = ({
             <div
               id={`${label}-tooltip`}
               role="tooltip"
-              className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-black bg-white text-[12px] px-2 py-1 rounded whitespace-nowrap z-20 shadow"
+              style={{
+                position: "absolute",
+                top: "-40px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                color: "black",
+                backgroundColor: "white",
+                fontSize: "12px",
+                paddingLeft: "8px",
+                paddingRight: "8px",
+                paddingTop: "4px",
+                paddingBottom: "4px",
+                borderRadius: "4px",
+                whiteSpace: "nowrap",
+                zIndex: 20,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+              }}
             >
               {toolTip}
             </div>
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-black rotate-45 z-20" />
+            <div
+              style={{
+                position: "absolute",
+                top: "-12px",
+                left: "50%",
+                transform: "translateX(-50%) rotate(45deg)",
+                width: "12px",
+                height: "12px",
+                backgroundColor: "black",
+                zIndex: 20,
+              }}
+            />
           </>
         )}
 
         {/* SVG Background with animated border */}
         <svg
-          className="absolute inset-0 w-full h-full"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+          }}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 148 131"
           fill="none"
@@ -121,15 +187,40 @@ const ProcessStage = ({
         <img
           src={icon}
           alt={label}
-          className="relative z-10 w-[60px] h-[60px] object-contain"
-          style={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))" }}
+          style={{
+            position: "relative",
+            zIndex: 10,
+            width: "60px",
+            height: "60px",
+            objectFit: "contain",
+            filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+          }}
         />
       </div>
 
       {/* Label */}
       {!top && (
-        <div className="bg-[#1e6fff] px-2 py-2 rounded-lg -mt-[9px] relative bottom-1">
-          <span className="text-white text-[14px] font-medium whitespace-nowrap">
+        <div
+          style={{
+            backgroundColor: "#1e6fff",
+            paddingLeft: "8px",
+            paddingRight: "8px",
+            paddingTop: "8px",
+            paddingBottom: "8px",
+            borderRadius: "8px",
+            marginTop: "-9px",
+            position: "relative",
+            bottom: "4px",
+          }}
+        >
+          <span
+            style={{
+              color: "white",
+              fontSize: "14px",
+              fontWeight: 500,
+              whiteSpace: "nowrap",
+            }}
+          >
             {label}
           </span>
         </div>
@@ -212,37 +303,87 @@ const ProcessFlowSection = ({ data }) => {
   }, [animationStarted, slowLoop]);
 
   return (
-    <section className="relative overflow-hidden py-28 px-16 flow-section">
+    <section
+      className="flow-section"
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        paddingTop: "112px",
+        paddingBottom: "112px",
+        paddingLeft: "64px",
+        paddingRight: "64px",
+      }}
+    >
       {/* Content */}
       <div
-        className="relative z-10 flex flex-col items-center"
-        style={{ gap: "75.22px" }}
+        style={{
+          position: "relative",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "75.22px",
+        }}
       >
         {/* Header */}
         <SectionHeader title={data.title} subtitle={data.subtitle} />
 
         {/* Process Flow Diagram */}
-        <div ref={flowRef} className="relative w-full mt-6">
+        <div
+          ref={flowRef}
+          style={{
+            position: "relative",
+            width: "100%",
+            marginTop: "24px",
+          }}
+        >
           {/* Flow connector SVG */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pointerEvents: "none",
+            }}
+          >
             <img
               ref={connectorRef}
               src="/images/flow-connector.svg"
               alt=""
-              className="w-full h-auto max-w-304.25 transition-all duration-1000 ease-linear"
               style={{
+                width: "100%",
+                height: "auto",
                 clipPath: "inset(0% 100% 0% 0%)",
+                transition: "all 1000ms linear",
               }}
             />
           </div>
 
           {/* Stages Grid */}
-          <div className="relative z-10 grid grid-cols-4 gap-x-8 gap-y-16 max-w-304.25 mx-auto">
+          <div
+            style={{
+              position: "relative",
+              zIndex: 10,
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              columnGap: "32px",
+              rowGap: "64px",
+              margin: "0 auto",
+            }}
+          >
             {/* Top Row - 4 stages */}
             {data.stages.slice(0, 4).map((stage, index) => (
               <div
                 key={index}
-                className="flex justify-evenly relative right-23 bottom-12"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  position: "relative",
+                  right: "105px",
+                  bottom: "65px",
+                }}
               >
                 <ProcessStage
                   label={stage.label}
@@ -258,7 +399,13 @@ const ProcessFlowSection = ({ data }) => {
             {data.stages.slice(4, 8).map((stage, index) => (
               <div
                 key={index + 4}
-                className="flex justify-center relative left-22 top-14"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  position: "relative",
+                  left: "105px",
+                  top: "75px",
+                }}
               >
                 <ProcessStage
                   label={stage.label}

@@ -8,12 +8,13 @@ const BlurredCircle = ({
 }) => {
   return (
     <div
-      className={`rounded-full ${className}`}
+      className={className}
       style={{
         width: `${size}px`,
         height: `${size}px`,
         backgroundColor: color,
         filter: `blur(${blurAmount}px)`,
+        borderRadius: "50%",
       }}
     />
   );

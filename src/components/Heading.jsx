@@ -2,10 +2,30 @@ import React from "react";
 
 const Heading = ({ title, subtitle }) => {
   return (
-    <div className="text-center mt-14">
-      <h1 className="font-bold text-5xl text-[#0F1724] mt-4">{title}</h1>
-      <div className="w-"></div>
-      <p className="w-1/2 text-center mx-auto text-White-Mode-For-Design-Paragraph text-[#9B9C9D]">
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "56px",
+      }}
+    >
+      <h1
+        style={{
+          fontWeight: "bold",
+          fontSize: "48px",
+          color: "#0F1724",
+          marginTop: "16px",
+        }}
+      >
+        {title}
+      </h1>
+      <p
+        style={{
+          width: "50%",
+          textAlign: "center",
+          margin: "0 auto",
+          color: "#9B9C9D",
+        }}
+      >
         {subtitle}
       </p>
     </div>
