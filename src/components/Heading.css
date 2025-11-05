@@ -1,0 +1,20 @@
+/* Heading Component Styles */
+
+.heading-container {
+  text-align: center;
+  margin-top: 56px;
+}
+
+.heading-title {
+  font-weight: bold;
+  font-size: 48px;
+  color: #0f1724;
+  margin-top: 16px;
+}
+
+.heading-subtitle {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  color: #9b9c9d;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import SectionHeader from "./SectionHeader";
+import "./ProcessFlowSection.css";
 
 const ProcessStage = ({
   label,
@@ -12,40 +13,11 @@ const ProcessStage = ({
   const [showTooltip, setShowTooltip] = React.useState(false);
 
   return (
-    <div
-      className={className}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className={`process-stage ${className}`}>
       {/* Label */}
       {top && (
-        <div
-          style={{
-            backgroundColor: "#1e6fff",
-            paddingLeft: "8px",
-            paddingRight: "8px",
-            paddingTop: "8px",
-            paddingBottom: "8px",
-            borderRadius: "8px",
-            marginTop: "-9px",
-            position: "relative",
-            top: "4px",
-            zIndex: 10,
-          }}
-        >
-          <span
-            style={{
-              color: "white",
-              fontSize: "14px",
-              fontWeight: 500,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {label}
-          </span>
+        <div className="stage-label stage-label-top">
+          <span className="stage-label-text">{label}</span>
         </div>
       )}
 
@@ -56,14 +28,7 @@ const ProcessStage = ({
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
         tabIndex={0}
-        style={{
-          position: "relative",
-          width: "148px",
-          height: "131px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className="stage-icon-container"
         aria-describedby={toolTip ? `${label}-tooltip` : undefined}
       >
         {/* Tooltip (shows on hover / focus) */}
@@ -72,49 +37,17 @@ const ProcessStage = ({
             <div
               id={`${label}-tooltip`}
               role="tooltip"
-              style={{
-                position: "absolute",
-                top: "-40px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                color: "black",
-                backgroundColor: "white",
-                fontSize: "12px",
-                paddingLeft: "8px",
-                paddingRight: "8px",
-                paddingTop: "4px",
-                paddingBottom: "4px",
-                borderRadius: "4px",
-                whiteSpace: "nowrap",
-                zIndex: 20,
-                boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-              }}
+              className="stage-tooltip"
             >
               {toolTip}
             </div>
-            <div
-              style={{
-                position: "absolute",
-                top: "-12px",
-                left: "50%",
-                transform: "translateX(-50%) rotate(45deg)",
-                width: "12px",
-                height: "12px",
-                backgroundColor: "black",
-                zIndex: 20,
-              }}
-            />
+            <div className="stage-tooltip-arrow" />
           </>
         )}
 
         {/* SVG Background with animated border */}
         <svg
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-          }}
+          className="stage-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 148 131"
           fill="none"
@@ -184,45 +117,13 @@ const ProcessStage = ({
           </g>
         </svg>
 
-        <img
-          src={icon}
-          alt={label}
-          style={{
-            position: "relative",
-            zIndex: 10,
-            width: "60px",
-            height: "60px",
-            objectFit: "contain",
-            filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-          }}
-        />
+        <img src={icon} alt={label} className="stage-icon" />
       </div>
 
       {/* Label */}
       {!top && (
-        <div
-          style={{
-            backgroundColor: "#1e6fff",
-            paddingLeft: "8px",
-            paddingRight: "8px",
-            paddingTop: "8px",
-            paddingBottom: "8px",
-            borderRadius: "8px",
-            marginTop: "-9px",
-            position: "relative",
-            bottom: "4px",
-          }}
-        >
-          <span
-            style={{
-              color: "white",
-              fontSize: "14px",
-              fontWeight: 500,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {label}
-          </span>
+        <div className="stage-label stage-label-bottom">
+          <span className="stage-label-text">{label}</span>
         </div>
       )}
     </div>
@@ -303,88 +204,29 @@ const ProcessFlowSection = ({ data }) => {
   }, [animationStarted, slowLoop]);
 
   return (
-    <section
-      className="flow-section"
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        paddingTop: "112px",
-        paddingBottom: "112px",
-        paddingLeft: "64px",
-        paddingRight: "64px",
-      }}
-    >
+    <section className="flow-section">
       {/* Content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "75.22px",
-        }}
-      >
+      <div className="flow-section-content">
         {/* Header */}
         <SectionHeader title={data.title} subtitle={data.subtitle} />
 
         {/* Process Flow Diagram */}
-        <div
-          ref={flowRef}
-          style={{
-            position: "relative",
-            width: "100%",
-            marginTop: "24px",
-          }}
-        >
+        <div ref={flowRef} className="flow-diagram-container">
           {/* Flow connector SVG */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              pointerEvents: "none",
-            }}
-          >
+          <div className="flow-connector-wrapper">
             <img
               ref={connectorRef}
               src="/images/flow-connector.svg"
               alt=""
-              style={{
-                width: "100%",
-                height: "auto",
-                clipPath: "inset(0% 100% 0% 0%)",
-                transition: "all 1000ms linear",
-              }}
+              className="flow-connector-image"
             />
           </div>
 
           {/* Stages Grid */}
-          <div
-            style={{
-              position: "relative",
-              zIndex: 10,
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              columnGap: "32px",
-              rowGap: "64px",
-              margin: "0 auto",
-            }}
-          >
+          <div className="stages-grid">
             {/* Top Row - 4 stages */}
             {data.stages.slice(0, 4).map((stage, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                  position: "relative",
-                  right: "105px",
-                  bottom: "65px",
-                }}
-              >
+              <div key={index} className="stage-wrapper-top">
                 <ProcessStage
                   label={stage.label}
                   icon={stage.icon}
@@ -397,16 +239,7 @@ const ProcessFlowSection = ({ data }) => {
 
             {/* Bottom Row - 4 stages */}
             {data.stages.slice(4, 8).map((stage, index) => (
-              <div
-                key={index + 4}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  position: "relative",
-                  left: "105px",
-                  top: "75px",
-                }}
-              >
+              <div key={index + 4} className="stage-wrapper-bottom">
                 <ProcessStage
                   label={stage.label}
                   icon={stage.icon}

@@ -1,33 +1,11 @@
 import React from "react";
+import "./Heading.css";
 
 const Heading = ({ title, subtitle }) => {
   return (
-    <div
-      style={{
-        textAlign: "center",
-        marginTop: "56px",
-      }}
-    >
-      <h1
-        style={{
-          fontWeight: "bold",
-          fontSize: "48px",
-          color: "#0F1724",
-          marginTop: "16px",
-        }}
-      >
-        {title}
-      </h1>
-      <p
-        style={{
-          width: "50%",
-          textAlign: "center",
-          margin: "0 auto",
-          color: "#9B9C9D",
-        }}
-      >
-        {subtitle}
-      </p>
+    <div className="heading-container">
+      <h1 className="heading-title">{title}</h1>
+      <p className="heading-subtitle">{subtitle}</p>
     </div>
   );
 };

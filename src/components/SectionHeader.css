@@ -1,0 +1,40 @@
+/* SectionHeader Styles */
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-header-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-header-title {
+  font-size: 50.1px;
+  font-weight: bold;
+  color: #0f1724;
+  text-align: center;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.section-header-line {
+  width: 100%;
+  max-width: 800px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #1e6fff 50%, transparent);
+}
+
+.section-header-subtitle {
+  font-size: 16.7px;
+  color: #9b9c9d;
+  text-align: center;
+  max-width: 742px;
+  line-height: 25.88px;
+  margin: 0;
+}

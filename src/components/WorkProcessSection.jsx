@@ -1,154 +1,48 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import SectionHeader from "./SectionHeader";
+import "./WorkProcessSection.css";
 
 const ProcessCard = ({ icon, title, description, isActive }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "relative",
-      }}
-    >
+    <div className="process-card">
       {/* Timeline Point - sitting ON the timeline (intersecting) */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-18px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 30,
-        }}
-      >
+      <div className="timeline-point-wrapper">
         <div
-          className="timeline-point"
-          style={{
-            width: "20px",
-            height: "20px",
-            borderRadius: "50%",
-            transition: "all 1000ms",
-            background: isActive ? "#1e6fff" : "rgba(30, 111, 255, 0.2)",
-          }}
+          className={`timeline-point ${isActive ? "active" : "inactive"}`}
         ></div>
       </div>
 
       {/* Vertical connector line with animated fill effect */}
-      <div
-        className="vertical-line-container"
-        style={{
-          position: "relative",
-          width: "4px",
-          height: "64px",
-          background: "rgba(30,111,255,0.1)",
-        }}
-      >
+      <div className="vertical-line-container">
         <div
           className="vertical-line-fill"
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
             height: isActive ? "100%" : "0%",
-            background: "#1e6fff",
-            transition: "all 1000ms ease-out",
           }}
         ></div>
       </div>
 
       {/* Card with glassmorphism effect */}
-      <div
-        className="card-content"
-        style={{
-          position: "relative",
-          width: "200px",
-          height: "250px",
-          borderRadius: "24px",
-          padding: "24px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          textAlign: "center",
-          overflow: "hidden",
-          backgroundColor: "rgba(30, 111, 255, 0.03)",
-          boxShadow:
-            "6px 6px 12px rgba(78, 137, 255, 0.50), -6px -6px 12px rgba(249, 252, 255, 0.30)",
-        }}
-      >
+      <div className="card-content">
         {/* Animated border overlay */}
         <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "24px",
-            pointerEvents: "none",
-            background: "#1e6fff",
-            clipPath: isActive ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
-            transition: "clip-path 800ms ease-out 1000ms",
-            WebkitMask:
-              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            WebkitMaskComposite: "xor",
-            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            maskComposite: "exclude",
-            padding: "1px",
-          }}
+          className={`card-border-overlay ${isActive ? "active" : "inactive"}`}
         ></div>
 
         {/* Icon */}
-        <div style={{ width: "50px", height: "50px", marginBottom: "24px", marginTop: "-8px" }}>
-          <div
-            className="icon-container"
-            style={{
-              width: "46px",
-              position: "absolute",
-              top: 0,
-              left: 10,
-              // right: 50,
-              bottom: 0,
-              margin: "auto",
-              zIndex: -300,
-            }}
-          >
+        <div className="card-icon-wrapper">
+          <div className="icon-container">
             <img src="./images/process-bg.svg" alt="" />
           </div>
 
-          <img
-            src={icon}
-            alt={title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              position: "relative",
-              right: "2px",
-            }}
-          />
+          <img src={icon} alt={title} className="card-icon" />
         </div>
 
         {/* Title */}
-        <h3
-          style={{
-            fontSize: "24px",
-            fontWeight: 500,
-            marginBottom: "4px",
-            color: "black",
-          }}
-        >
-          {title}
-        </h3>
+        <h3 className="card-title">{title}</h3>
 
         {/* Description */}
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#333333",
-            lineHeight: "23.8px",
-          }}
-        >
-          {description}
-        </p>
+        <p className="card-description">{description}</p>
       </div>
     </div>
   );
@@ -250,76 +144,26 @@ const WorkProcessSection = ({ data }) => {
   };
 
   return (
-    <section
-      style={{
-        paddingTop: "64px",
-        paddingBottom: "64px",
-        paddingLeft: "64px",
-        paddingRight: "64px",
-        backgroundColor: "#d4e4f7",
-      }}
-    >
-      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+    <section className="work-process-section">
+      <div className="work-process-container">
         {/* Header */}
         <SectionHeader title={data.title} subtitle={data.subtitle} />
 
         {/* Process Timeline */}
-        <div
-          ref={timelineRef}
-          style={{
-            position: "relative",
-            marginTop: "64px",
-            paddingTop: "16px",
-          }}
-        >
+        <div ref={timelineRef} className="timeline-container">
           {/* Timeline Line - positioned at the top */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: "12px",
-              maxWidth: "1400px",
-              backgroundColor: "rgba(30,111,255,0.2)",
-              borderRadius: "9999px",
-              zIndex: 10,
-            }}
-          >
-            <span
-              ref={innerLineRef}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                height: "100%",
-                width: "0%",
-                backgroundColor: "#1e6fff",
-                borderRadius: "9999px",
-                transition: "all 1000ms linear",
-              }}
-            ></span>
+          <div className="timeline-line">
+            <span ref={innerLineRef} className="timeline-line-fill"></span>
           </div>
 
           {/* Process Cards */}
-          <div
-            style={{
-              position: "relative",
-              zIndex: 10,
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: "32px",
-            }}
-          >
+          <div className="process-cards-grid">
             {data.steps.map((step, index) => (
               <div
                 key={index}
                 ref={(el) => (cardsRef.current[index] = el)}
                 onClick={() => handleCardClick(index)}
                 className="process-card-wrapper"
-                style={{
-                  cursor: "pointer",
-                }}
               >
                 <ProcessCard
                   icon={step.icon}
